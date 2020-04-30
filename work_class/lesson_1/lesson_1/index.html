@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML + JS</title>
+
+	<!-- Подключение внешнего JS-файла. -->
+	<script src="js/scripts.js"></script>
+
+	<!-- Можно подключать несколько JS-файлов. Они будут загружены по порядку.
+	Пока они не загрузятся HTML-документ не покажется. Это касается и др. скриптов.
+	На загрузку можно повлиять параметрами async и defer. -->
+	<script src="js/script1.js"></script>
+	<script src="js/script2.js"></script>
+	<script src="js/script3.js" async></script>
+	<script src="js/script4.js" defer></script>
+
+	<!-- Использование JS в <head>
+	без атрибута src (иначе не сработает).
+	Для вывода простых сообщений можно исп.
+	ф-цию alert(); -->
+	<script>
+		// alert('Привет Мир!');
+	</script>
+</head>
+<body>
+
+	<!-- Использование JS в <body>.
+	Для вывода данных в "тело" HTML-документа исп.
+	ф-цию document.write(); Можно выводить с тегами. -->
+	<script>
+		document.write('<h1>Привет Мир!</h1><i>Мой первый код на JS :)</i>');
+	</script>
+
+</body>
+</html>
