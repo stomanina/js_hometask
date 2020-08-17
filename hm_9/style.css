@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-style: 42px;
+    line-height: 28px;
+    background: chocolate;
+}
+
+.massage-box{
+    padding: 5%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.error,
+.alert,
+.msg{
+    padding: 30px;
+    margin-bottom: 20px;
+    width: fit-content;
+    align-items: flex-start;
+    margin: 20px 10px 20px auto;
+}
+
+.error{
+    background-color: darkolivegreen;
+    border-radius: 40px 40px 40px 40px;
+    color: chartreuse;
+    text-transform: uppercase;
+    font-style: italic;
+    
+}
+.alert{
+    background-color: darkorange;
+    border-radius: 0px 40px 0px 40px;
+    color: slateblue;
+    border-color: black;
+    border-width: 1px;
+    border-style: ridge;
+}
+.msg{
+    background-color: darkred;
+    border-radius: 20px 20px 40px 40px;
+    color: snow;
+    border-color: lightgoldenrodyellow;
+    border-width: 3px;
+    border-style: outset;
+    
+}
