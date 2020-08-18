@@ -41,12 +41,18 @@ body{
     cursor: no-drop;
 }
 .list_box{
-    display: inline-block;
+    display: block;
 }
 .list_box .add_task{
+    display: none;
     background-color: rgba(228, 212, 201, 0.191);
-    visibility: hidden;
+    margin: 0 auto;
     margin-bottom: 5px;
+}
+
+.list_box input[type="checkbox"] {
+    vertical-align: -1px;
+    margin-left: 10px;
 }
 
    

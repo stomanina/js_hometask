@@ -37,11 +37,14 @@
 
 	this.operation = function() {
 		switch(this.oper) {
-			case 'красный': this.result = alert(this.red); break;
-			case 'жёлтый': this.result =  alert(this.yellow);break;
-			case 'зеленый': this.result = alert(this.green); break;
+			case 'красный': alert(this.red); break;
+			case 'жёлтый': 
+				document.querySelector('.light2').classList.add('yellow');
+				alert(this.yellow); 
+			break;
+			case 'зеленый': alert(this.green); break;
             
-			default: this.result = alert('Светофор сломан!');
+			default: alert('Светофор сломан!');
 		}
 
 		this.show();
@@ -55,6 +58,8 @@
 let traffic_lights = new lights();
 traffic_lights.get();
 */
+
+
 
 // основной объект
 /* родитель - простой механизм часов, который может работать/не работать - functiom on/off */
@@ -98,29 +103,29 @@ let clockTab = function(time,data) {        // электронные часы �
 	data = 	day + '.' + month + '.' + year;             //  вид отображения даты
 	time = hours + ':' + minutes + ':' + seconds;       //  вид отображения времени
 
-	this.getTime = function(){                                         // функция отображения времени
+	this.getTime = function(){     
+		if (!self.getStatus()) return;
+		                                   // функция отображения времени
 		console.log('текущая дата и время: ' + data + ' ' + time);        
 	}
 
 	this.run = false;
 	var self = this;
 
+	let parentOn = this.on;
 	this.on = function() {
-		if (self.getStatus()) {
+		if (!self.getStatus()) {
+			parentOn();
 			this.run = true;
-		}
-	};
-
-	this.off = function() {
-		if (self.getStatus()){
-			this.run = false;
 		}
 	};
 
 	let parentOff = this.off;
 	this.off = function() {
-		parentOff.call(this);
-		self.off();
+		if (self.getStatus()){
+			parentOff();
+			this.run = false;
+		}
 	};
 	
 	this.info = function(){												// функция отображения состояния
@@ -131,6 +136,6 @@ let clockTab = function(time,data) {        // электронные часы �
 let ClockTab = new clockTab();
 console.dir(ClockTab);
 
-ClockTab.on();
+ClockTab.off();
 ClockTab.info();
 ClockTab.getTime();

@@ -64,20 +64,23 @@ let add_message = function(type, string){
     }, 5000);
 }
 
-//add_message('msg', 'Приветствую!');
-//add_message('alert', 'Сообщение отправлено!');
-//add_message('error', 'Ошибка!');
+// add_message('msg', 'Приветствую!');
+// add_message('alert', 'Сообщение отправлено!');
+// add_message('error', 'Ошибка!');
 
 
 // не могу разобраться во второй части
-/*function get_adress(){
-    let url = decodeURIComponent(window.location.search.split('&'));
+function get_adress(){
+    let url = window.location.search.split('&');
     console.log(url);
     
-        type = url[0].split('=')[0],
-        massage = url[1].split('=')[0];
+    type = url[0].split('=')[1],
+    massage = decodeURIComponent(url[1].split('=')[1]);
 
-    add_message(url[0].split('=')[1], url[1].split('=')[1]);
+    console.log(type);
+    console.log(massage);
+
+    add_message(type, massage);
 }
-*/
 
+get_adress();

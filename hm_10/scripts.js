@@ -35,11 +35,13 @@ window.addEventListener('load', function(){
 //работа с кнопками: 
 //вызов поля ввода
     if (buttonAddTask && addTaskInto) buttonAddTask.addEventListener('click', function(event){
-        addTaskInto.style.visibility = 'visible';
+        addTaskInto.style.display  = 'block';
+        addTaskInto.focus();
+        addTaskInto.value = '';
     });
 //скрытие поля ввода
     if (buttonAddTask && addTaskInto) document.addEventListener('keydown', function(event){
-        if (event.code == 'Enter') addTaskInto.style.visibility = 'hidden';
+        if (event.code == 'Enter') addTaskInto.style.display = 'none';
     });
 //получение информации и создание списка
     let info = {},
@@ -51,23 +53,25 @@ window.addEventListener('load', function(){
         let toDoItem = document.createElement('li');
             document.querySelector('ol').appendChild(toDoItem);
         info = event.target.value;
-        toDoItem.innerHTML = info;
+        toDoItem.innerHTML = `<span>${info}</span>`;
+
+        toDoItem.addEventListener('dblclick', function(event){
+            this.querySelector('span').innerHTML = prompt('Введите новую запись');
+            //перебором? 
+         });
 //функционал checkbox
     let checkBox = document.createElement('input');
         checkBox.setAttribute('type', 'checkbox');
         toDoItem.appendChild(checkBox); 
+    
+        checkBox.addEventListener('change', function(event){
+            if (this.checked == true) toDoItem.querySelector('span').style.textDecoration = 'line-through';
+            else toDoItem.querySelector('span').style.textDecoration = 'none';
+            
+         })
     });
-/*неудачная попытка работы галочки
-    let checkIn = document.querySelector('checkbox')
-        checkIn.addEventListener('click', function(event){
-        if (checkIn.checked == true) toDoList.style.textDecoration = 'underline';
-    })
-*/
 //редактирование записи (!решено неверно)
-    toDoList.addEventListener('dblclick', function(event){
-       toDoList.lastElementChild.innerHTML = prompt('Введите новую запись');
-        
-    });
+    
 //кнопка удаления записей поштучно
     buttonRemove.addEventListener('click', function(event){
         let remove_elem = document.querySelector('li');
